@@ -11,7 +11,8 @@ function App() {
   console.log("Locations data: ");
   console.log(locations);
 
-  return <div className="App">Take a look at the console! (F12)</div>;
+  return <div className="App">Take a look at the console! (F12)
+  <img src="./starTrekLogo.svg"></img></div>;
 }
 
 export default App;
