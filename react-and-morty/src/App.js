@@ -1,17 +1,16 @@
-import React from "react";
+import useFetch from "./api/useFetch";
 import "./App.css";
-import { useCharacters, useLocations } from "./api/useData";
+
 
 function App() {
-  const characters = useCharacters(1);
-  const locations = useLocations(1);
+  const { isPending, error, data } = useFetch('https://rickandmortyapi.com/api/character/?page=')
+  console.log(data, isPending, error);
+  return (<div className="App">
+    {isPending && <div>loading...</div>}
+    {error && <div>{error}</div>}
+    {data && <div>data</div>}
 
-  console.log("Characters data: ");
-  console.log(characters);
-  console.log("Locations data: ");
-  console.log(locations);
-
-  return <div className="App">Take a look at the console! (F12)</div>;
+  </div>);
 }
 
 export default App;
