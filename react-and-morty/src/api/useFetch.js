@@ -18,7 +18,8 @@ const useFetch = (url) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const abort = new AbortController()
+    const abort = new AbortController();
+
     fetch(url, { signal: abort.signal })
       .then((res) => {
         if (!res.ok) throw Error("There must be a problem");
@@ -34,7 +35,7 @@ const useFetch = (url) => {
         setIsPending(false)
         setError(err.message)
       });
-    return () => abort.signal();
+    return () => abort.abort();
   }, [url]);
 
   return { data, isPending, error };
