@@ -1,24 +1,21 @@
 import "./App.css";
-// import { useCharacters, useLocations } from "./api/useData";
 import Header from "./components/Header";
-import useFetch from "./api/useFetch";
+import CharacterList from './components/CharacterList'
+import { Routes, Switch, Route } from 'react-router-dom'
+import Home from "./components/Home";
+import Location from "./components/Location";
+import { mainUrls } from "./api/dataRoutes";
 
 function App() {
-  const { isPending, error, data } = useFetch('https://rickandmortyapi.com/api/character/?page=')
-  console.log(data, isPending, error);
-  // const characters = useCharacters(1);
-  // const locations = useLocations(1);
-  // console.log("Characters data: ");
-  // console.log(characters);
-  // console.log("Locations data: ");
-  // console.log(locations);
-
-  return (<div className="App">
-    {isPending && <div>loading...</div>}
-    {error && <div>{error}</div>}
-    {data && <div>data</div>}
-    <Header />
-
-  </div>)}
-
+  return (
+    <div className="app">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/characters" element={<CharacterList url={mainUrls.characters} />} />
+        <Route path="/location/:id" element={<Location />} />
+      </Routes>
+    </div>
+  );
+}
   export default App;
