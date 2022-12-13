@@ -10,7 +10,9 @@ function Landing() {
                 <Link to={'/characters'} >
                     <button className="button-27">Characters</button>
                 </Link>
-                <button className="button-27">Locations</button>
+                <Link to={'/locations'}>
+                    <button className="button-27">Locations</button>
+                </Link>
             </div>
         </div>
 
