@@ -1,51 +1,59 @@
 import { useState } from "react";
 import getLocationID from "../utils/getLocationID";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Card({ character }) {
     const [isExtended, setIsExtended] = useState(false); // boolean if a card info is extended
     function handleExtension() {
-        setIsExtended(!isExtended)
+        setIsExtended(!isExtended);
     }
-    function DefaultInfo() {
-        return <>
+
+    return isExtended ? (
+        <ul>
+            <div>
+                <DefaultInfo />
+                <ExpandedInfo />
+            </div>
+            <button onClick={handleExtension}>Collapse</button>
+            {/* <button class="collapsible">Rick Sanchez</button>
+                <div class="content">
+                    <div>
+                       
+                    </div>
+                </div> */}
+        </ul>
+    ) : (
+        <ul>
+            <div>
+                <DefaultInfo />
+            </div>
+            <button onClick={handleExtension}>Expand</button>
+        </ul>
+    );
+}
+
+function DefaultInfo() {
+    return (
+        <>
             <li>Name: {character.name}</li>
-            <li>Location: <Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link>
+            <li>
+                Location:{" "}
+                <Link to={`/location/${getLocationID(character.location.url)}`}>
+                    {character.location.name}
+                </Link>
             </li>
         </>
-    }
-    function ExpandedInfo() {
-        return <>
+    );
+}
+
+function ExpandedInfo() {
+    return (
+        <>
             <li>Status: {character.status}</li>
             <li>Species: {character.species}</li>
             <li>Episode Count:{character.episode.length}</li>
             <li>Origin: {character.origin.name}</li>
             <li>Gender: {character.gender}</li>
         </>
-    }
-
-
-    return (
-        isExtended ?
-            <ul>
-                <div>
-                    <DefaultInfo />
-                    <ExpandedInfo />
-                </div>
-                <button onClick={handleExtension}>Collapse</button>
-                {/* <button class="collapsible">Rick Sanchez</button>
-                <div class="content">
-                    <div>
-                       
-                    </div>
-                </div> */}
-            </ul>
-            :
-            <ul>
-                <div>
-                    <DefaultInfo />
-                </div>
-                <button onClick={handleExtension}>Expand</button>
-            </ul>
-    )
+    );
 }
