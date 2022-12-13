@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, link } from "react-router-dom"
+import { Link } from "react-router-dom"
+import getLocationID from "../utils/getLocationID";
 
 export default function Card({ character }) {
     function handleExtension() {
@@ -12,7 +13,7 @@ export default function Card({ character }) {
             <ul>
                 <a onClick={handleExtension}><li>Name: {character.name}</li>
                 <li>Location: {character.location.name}</li>
-                {/* <Link to={character.location.url}> <li>{character.location.name}</li></Link> */}
+                <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
                 <li>Status: {character.status}</li>
                 <li>Species: {character.species}</li>
                 <li>Episode Count:  {character.episode.length}</li>
@@ -24,11 +25,8 @@ export default function Card({ character }) {
             <a onClick={handleExtension}><li>Name: {character.name}</li>
 
             <li>Location: {character.location.name}</li>
-            {/* <Link to={character.location.url}> <li>{character.location.name}</li></Link> */}</a>
+            <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
             
-
         </ul>)
 }
-       
-       
-
+     

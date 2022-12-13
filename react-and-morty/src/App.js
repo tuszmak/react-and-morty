@@ -1,17 +1,21 @@
-import useFetch from "./api/useFetch";
 import "./App.css";
-import CharacterList from "./components/CharacterList";
-import {mainUrls} from "./api/dataRoutes"
-
-
+import Header from "./components/Header";
+import CharacterList from './components/CharacterList'
+import { Routes, Switch, Route } from 'react-router-dom'
+import Home from "./components/Home";
+import Location from "./components/Location";
+import { mainUrls } from "./api/dataRoutes";
 
 function App() {
-  
-  // const { isPending, error, data } = useFetch('https://rickandmortyapi.com/api/character/?page=')
-
-  return (<div className="App">
-    <CharacterList url={mainUrls.characters} />
-  </div>);
+  return (
+    <div className="app">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/characters" element={<CharacterList url={mainUrls.characters} />} />
+        <Route path="/location/:id" element={<Location />} />
+      </Routes>
+    </div>
+  );
 }
-
-export default App;
+  export default App;
