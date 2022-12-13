@@ -21,7 +21,7 @@ let objectString = "";
 let objectArray = Object.entries(a);
 
 export default function Card(character) {
-    const [isExtended, setIsExtended] = useState(false);
+    const [isExtended, setIsExtended] = useState(false); //when you extend the card to show more info about it.
     return (
         <div className="card">
             <ul>
