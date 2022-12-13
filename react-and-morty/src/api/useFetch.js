@@ -1,22 +1,44 @@
-import React, { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
 /**
-     Fetch data from the given url. If it can't get any data from the url, than it writes a message into the console.
-     *
-     * @param initUrl string that gives the route that the function fetch data from.
-     */
-export const useFetch = (initUrl) => {
-  const [url, setUrl] = useState(initUrl);
-  const [data, setData] = useState(undefined);
+ * Custom hook for Fetch data with error handling, and loading state;  
+ * 
+ * usage const {data, isPending, error} = useFetch('url')
+ * 
+ * data: the fetched data for rename 
+ *    use destruction pattern {data: locations, ...}
+ * isPending: true until is data or error 
+ * error: if response not ok or other fetch error
+ * 
+ * @param {String} url 
+ * @returns Object data isPending error
+ */
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [isPending, setIsPending] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => {
-        if (response.status !== 200) return "There must be a problem";
-        return response.json();
+    const abort = new AbortController();
+
+    fetch(url, { signal: abort.signal })
+      .then((res) => {
+        if (!res.ok) throw Error("There must be a problem");
+        return res.json();
       })
-      .then((json) => setData(json));
+      .then((data) => {
+        setIsPending(false);
+        setError(null)
+        setData(data);
+      })
+      .catch(err => {
+        if (err.name === 'AbortError') return;
+        setIsPending(false)
+        setError(err.message)
+      });
+    return () => abort.abort();
   }, [url]);
 
-  return [data, setUrl];
+  return { data, isPending, error };
 };
+
+export default useFetch;
