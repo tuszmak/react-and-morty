@@ -23,10 +23,3 @@ export default function Card({ character }) {
 
         </ul>)
 }
-function DetailedInformation({ character }) {
-    return (<><li>Status: {character.status}</li>
-    <li>Species: {character.species}</li>
-    <li>Episode Count:  {character.episode.length}</li>
-    <li>Origin: {character.origin.name}</li>
-    <li>Gender: {character.gender}</li></>)
-}
