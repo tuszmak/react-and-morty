@@ -1,16 +1,15 @@
 import useFetch from "./api/useFetch";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 function App() {
-  const { isPending, error, data } = useFetch('https://rickandmortyapi.com/api/character/?page=')
-  console.log(data, isPending, error);
-  return (<div className="App">
-    {isPending && <div>loading...</div>}
-    {error && <div>{error}</div>}
-    {data && <div>data</div>}
-
-  </div>);
+  return (
+    <Router>
+      <Header />
+      <Route path="/characters" component={CharacterList} />
+    </Router>
+  );
 }
 
 export default App;
