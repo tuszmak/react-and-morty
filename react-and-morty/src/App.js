@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useCharacters, useLocations } from "./api/useData";
-import Landing from "./components/Landing";
+import Header from "./components/Header";
 
 function App() {
   const characters = useCharacters(1);
@@ -12,7 +12,7 @@ function App() {
   console.log(locations);
 
   return <>
-    <Landing />
+    <Header />
   </>
 }
 

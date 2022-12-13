@@ -30,6 +30,8 @@ body {
     touch-action: manipulation;
     width: 100%;
     will-change: transform;
+    margin-top: 0.5%;
+    width: 50em;
 }
 
 .button-27:disabled {
@@ -44,4 +46,8 @@ body {
 .button-27:active {
     box-shadow: none;
     transform: translateY(0);
+}
+
+#logo {
+    width: 50em;
 }
