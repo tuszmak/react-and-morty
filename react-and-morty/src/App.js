@@ -1,18 +1,18 @@
-import useFetch from "./api/useFetch";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import CharacterList from "./components/CharacterList";
-import { mainUrls } from "./api/dataRoutes"
-
-
 import Header from "./components/Header";
+import CharacterList from './components/CharacterList'
+import { Routes, Switch, Route } from 'react-router-dom'
+import Home from "./components/Home";
 
 function App() {
   return (
-    <Router>
+    <div className="app">
       <Header />
-      <Route path="/characters" component={CharacterList} />
-    </Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/characters" element={<CharacterList />} />
+      </Routes>
+    </div>
   );
 }
 
