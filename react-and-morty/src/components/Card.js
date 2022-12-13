@@ -3,10 +3,30 @@ import { Link } from "react-router-dom"
 import getLocationID from "../utils/getLocationID";
 
 export default function Card({ character }) {
-    const [isExtended, setIsExtended] = useState(false); //when you extend the card to show more info about it.
-    return (<ul>
-        <li>{character.name}</li>
-        <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
+    function handleExtension() {
+        setIsExtended(!isExtended)
+    }
+    const [isExtended, setIsExtended] = useState(false); // boolean if a card info is extended
 
-    </ul>)
+    return (
+        isExtended ?
+            <ul>
+                <a onClick={handleExtension}><li>Name: {character.name}</li>
+                <li>Location: {character.location.name}</li>
+                <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
+                <li>Status: {character.status}</li>
+                <li>Species: {character.species}</li>
+                <li>Episode Count:  {character.episode.length}</li>
+                <li>Origin: {character.origin.name}</li>
+                <li>Gender: {character.gender}</li></a>
+
+            </ul>
+            : <ul>
+            <a onClick={handleExtension}><li>Name: {character.name}</li>
+
+            <li>Location: {character.location.name}</li>
+            <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
+            
+        </ul>)
 }
+     
