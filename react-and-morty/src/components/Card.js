@@ -3,6 +3,7 @@ import getLocationID from "../utils/getLocationID";
 import { Link } from "react-router-dom"
 
 export default function Card({ character }) {
+    const [isExtended, setIsExtended] = useState(false); // boolean if a card info is extended
     function handleExtension() {
         setIsExtended(!isExtended)
     }
@@ -22,7 +23,7 @@ export default function Card({ character }) {
             <li>Gender: {character.gender}</li>
         </>
     }
-    const [isExtended, setIsExtended] = useState(false); // boolean if a card info is extended
+
 
     return (
         isExtended ?
