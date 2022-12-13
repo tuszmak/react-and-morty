@@ -22,10 +22,10 @@ export default function Card({ character }) {
 
             </ul>
             : <ul>
-            <a onClick={handleExtension}><li>Name: {character.name}</li></a>
+            <a onClick={handleExtension}><li>Name: {character.name}</li>
 
             <li>Location: {character.location.name}</li>
-            <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
+            <li><Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li></a>
             
         </ul>)
 }
