@@ -1,5 +1,7 @@
 import useFetch from "./api/useFetch";
 import "./App.css";
+import Card from "./components/Card";
+
 
 
 function App() {
@@ -9,6 +11,7 @@ function App() {
     {isPending && <div>loading...</div>}
     {error && <div>{error}</div>}
     {data && <div>data</div>}
+    {data && <Card data={data} />}
 
   </div>);
 }
