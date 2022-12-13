@@ -5,7 +5,7 @@ function Landing() {
     let img = "./Rick_and_Morty.png"
     return <>
         <div style={{ textAlign: "center" }}>
-            <img id="logo" src={img} alt="img logo" ></img>
+            <Link to={'/'}><img id="logo" src={img} alt="img logo" ></img></Link>
             <div>
                 <Link to={'/characters'} >
                     <button className="button-27">Characters</button>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"
 import getLocationID from "../utils/getLocationID";
+import { Link } from "react-router-dom"
 
 export default function Card({ character }) {
     function handleExtension() {
