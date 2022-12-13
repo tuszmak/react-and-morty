@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Landing() {
 
-    let img = "./Rick_and_Morty.png"
+    let img = "./Rick_and_Morty.svg"
     return <>
         <div style={{ textAlign: "center" }}>
             <Link to={'/'}><img id="logo" src={img} alt="img logo" ></img></Link>
