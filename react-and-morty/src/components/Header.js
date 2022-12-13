@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LandingDescription() {
     return <>
@@ -16,8 +17,10 @@ function Landing() {
         <div style={{ textAlign: "center" }}>
             <img id="logo" src={img} alt="img logo" ></img>
             <div>
-                <button class="button-27" onClick={handleClick}>Characters</button>
-                <button class="button-27" onClick={handleClick}>Locations</button>
+                <Link to={'/characters'} >
+                    <button className="button-27" onClick={handleClick}>Characters</button>
+                </Link>
+                <button className="button-27" onClick={handleClick}>Locations</button>
             </div>
 
             {isShown && <LandingDescription />}
