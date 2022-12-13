@@ -11,6 +11,5 @@ export default function Card({character}) {
        
         {/* if(isExtended) */}
 
-        <li></li>
     </ul>)
 }
