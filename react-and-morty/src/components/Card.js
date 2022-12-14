@@ -8,14 +8,14 @@ export default function Card({ character }) {
         setIsExtended(!isExtended);
     }
     return (
-        <div style={{ width: "400px ", background: "#172A46", borderRadius: "25px", whiteSpace: "nowrap", margin: "5px" }}>
+        <div class="card-container" style={{}}>
             <ul>
-                <img src={character.image} alt="charImage" style={{ width: "200px", borderRadius: "25px" }}></img>
+                <img src={character.image} alt="charImage" ></img>
                 <DefaultInfo character={character} />
                 {isExtended && <ExpandedInfo character={character} />}
             </ul>
-            <div style={{ background: "#101b2b", borderRadius: "25px" }}>
-                <button onClick={handleExtension} style={{ backgroundColor: "transparent", border: "none", fontSize: "20px" }}>{isExtended ? "▲" : "▼"}</button>
+            <div class="cardBtn-container" >
+                <button class="cardBtn" onClick={handleExtension}>{isExtended ? "▲" : "▼"}</button>
             </div>
         </div >
     )
