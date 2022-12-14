@@ -1,0 +1,10 @@
+.loc-content {
+  background-color: rgb(66, 74, 74);
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  border: 3px solid rgba(0, 128, 0, 0);
+  padding: 10px;
+}

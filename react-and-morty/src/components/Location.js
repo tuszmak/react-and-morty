@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import useFetch from "../api/useFetch";
 import { mainUrls } from '../api/dataRoutes'
-
+import "./location.css"
 const Location = () => {
   const { id } = useParams()
   const { isPending, error, data: loc } = useFetch(`${mainUrls.locations}${id}`)
@@ -10,14 +10,15 @@ const Location = () => {
     <div>
       {isPending && <h1>Loading...</h1>}
       {error && <h1>{error}</h1>}
-      {loc && <div>
+      {loc && <div className="loc-content center">
         <h1>{loc.name}</h1>
-        <h3>{loc.type}</h3>
-        <p>Dimension:{loc.dimension}</p>
+        <h3>Type: {loc.type}</h3>
+        <p>Dimension: {loc.dimension}</p>
         <h2>Residents:</h2>
         <ul>
           <ResidentsList residents={loc.residents} />
         </ul>
+        <p>More Later...</p>
       </div>}
     </div>
   )
