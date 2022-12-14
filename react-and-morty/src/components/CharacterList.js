@@ -9,7 +9,7 @@ export default function CharacterList({ url }) {
         if(loadedPageNumber > 0){ setLoadedPageNumber(loadedPageNumber - 1);}
     }
     function handleNextPage(){
-        setLoadedPageNumber(loadedPageNumber + 1);
+        if(loadedPageNumber < 43) { setLoadedPageNumber(loadedPageNumber + 1)};
     }
     const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
     console.log(data);
