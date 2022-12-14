@@ -25,8 +25,8 @@ const Location = ({ locationID }) => {
       {loc && (
         <div>
           <h1>{loc.name}</h1>
-          <h3>{loc.type}</h3>
-          <p>Dimension:{loc.dimension}</p>
+          <h3>Type: {loc.type}</h3>
+          <p>Dimension: {loc.dimension}</p>
           {isExtended && (
             <>
               {" "}
