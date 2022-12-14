@@ -7,14 +7,12 @@ export default function CharacterList({ url }) {
     console.log(data);
     return (
 
-        <div className="character-list" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+        <div className="character-list">
             {isPending && <div>loading...</div>}
             {error && <div>{error}</div>}
             {data && data.results.map((character) =>
                 <Card key={character.id} character={character} />
             )}
-
-
         </div>
     );
 }
