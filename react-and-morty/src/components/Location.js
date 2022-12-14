@@ -6,19 +6,17 @@ import { useState } from "react";
 
 const Location = ({ locationID }) => {
   const [isExtended, setIsExtended] = useState(false);
+
   function handleExtension() {
     setIsExtended(!isExtended);
   }
+
   let { id } = useParams();
   if (!id) {
     id = locationID;
   }
-  // console.log(`A kulcs: ${locationID}`);
-  const {
-    isPending,
-    error,
-    data: loc,
-  } = useFetch(`${mainUrls.locations}${id}`);
+
+  const { isPending, error, data: loc } = useFetch(`${mainUrls.locations}${id}`);
   // console.log(loc);
   return (
     <div>
@@ -38,7 +36,7 @@ const Location = ({ locationID }) => {
               </ul>
             </>
           )}
-              <button onClick={handleExtension}>{isExtended ? "Collapse" : "Extend"}</button>
+          <button onClick={handleExtension}>{isExtended ? "Collapse" : "Extend"}</button>
         </div>
       )}
     </div>

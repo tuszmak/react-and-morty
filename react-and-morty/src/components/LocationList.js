@@ -1,14 +1,9 @@
-import { useState } from "react";
 import useFetch from "../api/useFetch";
 import Location from "./Location";
 
-
 export default function LocationList({ url }) {
     const { isPending, error, data } = useFetch(url)
-    
-    // console.log(data);
     return (
-
         <div className="location-list">
             {isPending && <div>loading...</div>}
             {error && <div>{error}</div>}
@@ -16,8 +11,6 @@ export default function LocationList({ url }) {
             <Location key={location.id} locationID={location.id} />
 
             )}
-
-
         </div>
     );
 }
