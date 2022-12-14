@@ -9,16 +9,16 @@ export default function Card({ character }) {
     }
 
     return (
-        <div style={{ width: "250px " }}>
-            <ul style={{ background: "blue" }}>
-                <img src={character.image} alt="charImage" style={{ width: "200px" }}></img>
+        <div style={{ width: "400px ", background: "#172A46", borderRadius: "25px", whiteSpace: "nowrap", margin: "5px" }}>
+            <ul>
+                <img src={character.image} alt="charImage" style={{ width: "200px", borderRadius: "25px" }}></img>
                 <DefaultInfo character={character} />
                 {isExtended && <ExpandedInfo character={character} />}
             </ul>
-            <div style={{ background: "green" }}>
-                <button onClick={handleExtension}>{isExtended ? "Collapse" : "Extend"}</button>
+            <div style={{ background: "#101b2b", borderRadius: "25px" }}>
+                <button onClick={handleExtension} style={{ backgroundColor: "transparent", border: "none", fontSize: "20px" }}>{isExtended ? "▲" : "▼"}</button>
             </div>
-        </div>
+        </div >
     )
 }
 
