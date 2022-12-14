@@ -1,11 +1,21 @@
 import { useParams, Link } from "react-router-dom";
 import useFetch from "../api/useFetch";
 import { mainUrls } from '../api/dataRoutes'
+import ResidentsList from "./ResidentList";
+import { useState } from "react";
 
-const Location = () => {
-  const { id } = useParams()
-  const { isPending, error, data: loc } = useFetch(`${mainUrls.locations}${id}`)
-  console.log(loc);
+const Location = ({ locationID }) => {
+  const [isExtended, setIsExtended] = useState(false);
+  function handleExtension() {
+    setIsExtended(!isExtended);
+  }
+  let { id } = useParams();
+  if (!id) {
+    id = locationID;
+  }
+  // console.log(`A kulcs: ${locationID}`);
+  const { isPending, error, data: loc } = useFetch(`${mainUrls.locations}${id}`);
+  // console.log(loc);
   return (
     <div>
       {isPending && <h1>Loading...</h1>}
@@ -14,10 +24,12 @@ const Location = () => {
         <h1>{loc.name}</h1>
         <h3>{loc.type}</h3>
         <p>Dimension:{loc.dimension}</p>
+        <button onClick={handleExtension}>Collapse</button>
         <h2>Residents:</h2>
         <ul>
           <ResidentsList residents={loc.residents} />
         </ul>
+
       </div>}
     </div>
   )
@@ -26,22 +38,3 @@ const Location = () => {
 export default Location;
 
 
-const ResidentsList = ({ residents }) => {
-  const maxTen = Math.min(residents.length, 10);
-  const list = []
-  for (let i = 0; i < maxTen; i++) {
-    list.push(<li key={i}>{<Resident url={residents[i]} />}</li>)
-  }
-  return list
-}
-const Resident = ({ url }) => {
-  const { isPending, error, data } = useFetch(url)
-  console.log(data);
-  return (
-    <>
-      {isPending && <h1>Loading...</h1>}
-      {error && <h1>{error}</h1>}
-      {data && <p>Name: <Link to={`/character/${data.id}`}>{data.name}</Link></p>}
-    </>
-  )
-}

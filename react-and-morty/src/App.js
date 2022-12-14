@@ -17,7 +17,7 @@ function App() {
         <Route path="/characters" element={<CharacterList url={mainUrls.characters} />} />
         <Route path="/character/:id" element={<Character />} />
         <Route path="/location/:id" element={<Location />} />
-        <Route path="/locations" element={<LocationList />} />
+        <Route path="/locations" element={<LocationList  url={mainUrls.locations} />} />
       </Routes>
     </div>
   );
