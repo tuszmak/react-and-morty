@@ -7,6 +7,7 @@ import Location from "./components/Location";
 import { mainUrls } from "./api/dataRoutes";
 import Character from "./components/Character";
 import LocationList from "./components/LocationList";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/character/:id" element={<Character />} />
         <Route path="/location/:id" element={<Location />} />
         <Route path="/locations" element={<LocationList  url={mainUrls.locations} />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </div>
   );
