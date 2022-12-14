@@ -102,6 +102,12 @@ a:hover {
     color: hotpink;
 }
 
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .buttons {
     display: flex;
     align-items: center;
