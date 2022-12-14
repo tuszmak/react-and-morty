@@ -102,12 +102,13 @@ a:hover {
     color: hotpink;
 }
 
-.buttons{
+.buttons {
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-.errorPage{
+.errorPage {
     display: flex;
     height: 50vh;
     justify-content: center;
