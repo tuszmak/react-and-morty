@@ -1,13 +1,12 @@
 import { useState } from "react";
 import getLocationID from "../utils/getLocationID";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Card({ character }) {
     const [isExtended, setIsExtended] = useState(false); // boolean if a card info is extended
     function handleExtension() {
-        setIsExtended(!isExtended)
+        setIsExtended(!isExtended);
     }
-
     return (
         <div class="card-container" style={{}}>
             <ul>
