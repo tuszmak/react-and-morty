@@ -115,7 +115,13 @@ a:hover {
     color: hotpink;
 }
 
-.navBtns {
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,4 +132,11 @@ a:hover {
     height: 50vh;
     justify-content: center;
     align-items: center;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid rgba(0, 128, 0, 0);
+    padding: 10px;
 }
