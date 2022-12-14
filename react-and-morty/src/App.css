@@ -1,13 +1,13 @@
 /* CSS */
 body {
-    background-color: #1A1A1A;
+    background-color: #0A192F;
     color: white;
 }
 
 .button-27 {
     appearance: none;
-    background-color: #000000;
-    border: 2px solid #1A1A1A;
+    background-color: #355b98;
+    border: 2px solid #355b98;
     border-radius: 15px;
     box-sizing: border-box;
     color: #FFFFFF;
@@ -17,7 +17,7 @@ body {
     font-size: 16px;
     font-weight: 600;
     line-height: normal;
-    margin: 0;
+    margin: 10px;
     min-height: 60px;
     min-width: 0;
     outline: none;
@@ -76,3 +76,27 @@ body {
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 } */
+
+li {
+    list-style: none;
+}
+
+a:link {
+    color: #61f5d4;
+}
+
+/* visited link */
+a:visited {
+    color: #61f5d4;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+.errorPage{
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
