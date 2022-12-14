@@ -94,3 +94,8 @@ a:visited {
 a:hover {
     color: hotpink;
 }
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

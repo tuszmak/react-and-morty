@@ -5,25 +5,31 @@ import Card from "./Card";
 export default function CharacterList({ url }) {
     
     const [loadedPageNumber, setLoadedPageNumber] = useState(1);
-    function handleExtendPage(){
-        setLoadedPageNumber(loadedPageNumber++);
+    function handlePrevPage(){
+        if(loadedPageNumber > 0){ setLoadedPageNumber(loadedPageNumber - 1);}
     }
+    function handleNextPage(){
+        setLoadedPageNumber(loadedPageNumber + 1);
+    }
+    const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
     console.log(data);
-    for (let i = 1; i <= loadedPageNumber; i++) {
-        const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
         return (
-
+            <>
             <div className="character-list" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+
                 {isPending && <div>loading...</div>}
                 {error && <div>{error}</div>}
                 {data && data.results.map((character) =>
                     <Card key={character.id} character={character} />
                 )}
-                <button></button>
-    
-    
+                
             </div>
+            <div className="buttons">
+            <button onClick={handlePrevPage} className="button-27" >Previous</button>
+            <button onClick={handleNextPage} className='button-27'>Next</button>
+            </div>
+            </>
         );
     }
     
-}
+
