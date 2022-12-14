@@ -8,21 +8,20 @@ export default function Card({ character }) {
         setIsExtended(!isExtended);
     }
     return (
-        <div class="card-container" style={{}}>
-            <ul>
+        <div class={`card-container ${isExtended && "extended"}`}>
+            <ul class={isExtended && "ul-extended"}>
                 <img src={character.image} alt="charImage" ></img>
                 <DefaultInfo character={character} />
                 {isExtended && <ExpandedInfo character={character} />}
             </ul>
-            <div class="cardBtn-container" >
-                <button class="cardBtn" onClick={handleExtension}>{isExtended ? "▲" : "▼"}</button>
+            <div class="cardBtn-container" onClick={handleExtension} >
+                <button class="cardBtn" >{isExtended ? "▲" : "▼"}</button>
             </div>
         </div >
     )
 }
-
 function DefaultInfo({ character }) {
-    console.log(character);
+    //console.log(character);
     return <>
         <li>Name: {character.name}</li>
         <li>Location: <Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link>
@@ -38,3 +37,5 @@ function ExpandedInfo({ character }) {
         <li>Gender: {character.gender}</li>
     </>
 }
+
+

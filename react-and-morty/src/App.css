@@ -68,6 +68,19 @@ body {
     font-weight: bold;
 }
 
+.extended {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: -10%;
+    z-index: 10;
+}
+
+.ul-extended {
+    flex: auto;
+    flex-direction: column;
+}
+
 .cardBtn {
     background-color: transparent;
     border: none;
@@ -102,12 +115,13 @@ a:hover {
     color: hotpink;
 }
 
-.buttons{
+.navBtns {
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-.errorPage{
+.errorPage {
     display: flex;
     height: 50vh;
     justify-content: center;
