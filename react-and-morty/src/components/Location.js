@@ -36,10 +36,9 @@ const Location = ({ locationID }) => {
               <ul>
                 <ResidentsList residents={loc.residents} />
               </ul>
-              <button onClick={handleExtension}>Collapse</button>
             </>
           )}
-          <button onClick={handleExtension}>Expand</button>
+              <button onClick={handleExtension}>{isExtended ? "Collapse" : "Extend"}</button>
         </div>
       )}
     </div>
