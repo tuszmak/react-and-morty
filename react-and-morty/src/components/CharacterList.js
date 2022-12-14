@@ -16,7 +16,6 @@ export default function CharacterList({ url }) {
         return (
             <>
             <div className="character-list" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
-
                 {isPending && <div>loading...</div>}
                 {error && <div>{error}</div>}
                 {data && data.results.map((character) =>
@@ -31,5 +30,3 @@ export default function CharacterList({ url }) {
             </>
         );
     }
-    
-
