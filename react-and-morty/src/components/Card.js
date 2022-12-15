@@ -25,7 +25,7 @@ const Card = React.forwardRef(({ character, isOnlyOne }, ref) => {
 function DefaultInfo({ character }) {
     return <>
         <li>Name: <Link to={`/character/${character.id}`}> {character.name}</Link></li>
-        <li>Location: <Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
+        {character.location.url === "" ? <li>Location: {character.location.name}</li> : <li>Location: <Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>}
     </>
 }
 function ExpandedInfo({ character }) {
