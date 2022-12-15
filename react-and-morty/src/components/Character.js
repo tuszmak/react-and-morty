@@ -7,7 +7,7 @@ const Character = () => {
   const { id } = useParams()
   const { isPending, error, data: character } = useFetch(`${mainUrls.characters}${id}`);
   return (
-    <div className={'card-container center'}>
+    <div className={'char center'}>
       {isPending && <h1>Loading...</h1>}
       {error && <h1>{error}</h1>}
       {character &&
