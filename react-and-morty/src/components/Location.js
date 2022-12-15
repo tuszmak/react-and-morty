@@ -3,8 +3,9 @@ import useFetch from "../api/useFetch";
 import { mainUrls } from "../api/dataRoutes";
 import ResidentsList from "./ResidentList";
 import { useState } from "react";
+import React from "react";
 
-const Location = ({ locationID }) => {
+const Location = React.forwardRef(({ locationID },ref) => {
   let { id } = useParams();
   const fetchId = !id ? locationID : id;
   const [isExtended, setIsExtended] = useState(!id ? false : true);
@@ -16,7 +17,7 @@ const Location = ({ locationID }) => {
 
 
   return (
-    <div>
+    <div ref={ref}>
       {isPending && <h1>Loading...</h1>}
       {error && <h1>{error}</h1>}
       {loc && (
@@ -38,6 +39,6 @@ const Location = ({ locationID }) => {
       )}
     </div>
   );
-};
+});
 
 export default Location;
