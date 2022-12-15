@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import useFetch from "../api/useFetch";
 import Card from "./Card";
 
@@ -12,7 +12,23 @@ export default function CharacterList({ url }) {
         if (loadedPageNumber < 43) { setLoadedPageNumber(loadedPageNumber + 1) };
     }
     const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
-    //console.log(data);
+
+    
+    const hasNextPage = true
+    
+    const intObserver = useRef();
+    const lastPostRef = useCallback(post =>{
+      if(isPending) return
+      if(intObserver.current) intObserver.current.disconnect();
+      intObserver.current = new IntersectionObserver(posts =>{
+        if(posts[0].isIntersecting && hasNextPage){
+          console.log("Coming to the last page");
+          setLoadedPageNumber(pageNumber => pageNumber + 1)
+        }
+      })
+      if(post) intObserver.current.observe(post);
+    }, [isPending,hasNextPage])
+    console.log(data);
     return (
         <>
             <div className="character-list" >
