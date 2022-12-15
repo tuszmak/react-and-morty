@@ -1,10 +1,11 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useFetch from "../api/useFetch";
 import Card from "./Card";
 
 export default function CharacterList({ url }) {
 
     const [loadedPageNumber, setLoadedPageNumber] = useState(1);
+    const [characters, setCharacters] = useState(null)
     function handlePrevPage() {
         if (loadedPageNumber > 0) { setLoadedPageNumber(loadedPageNumber - 1); }
     }
@@ -15,7 +16,14 @@ export default function CharacterList({ url }) {
 
     
     const hasNextPage = true
-    
+    useEffect(()=>{
+        if(!isPending && setLoadedPageNumber !== 1){
+            setCharacters([...characters, ...data.results])
+        }
+        else if(!isPending){
+            setCharacters([...data.results])
+        }
+    }, [data])
     const intObserver = useRef();
     const lastPostRef = useCallback(post =>{
       if(isPending) return
@@ -34,15 +42,12 @@ export default function CharacterList({ url }) {
             <div className="character-list" >
                 {isPending && <div>loading...</div>}
                 {error && <div>{error}</div>}
-                {data && data.results.map((character) =>
-                    <Card key={character.id} character={character} />
+                {characters && characters.map((character) =>
+                    <Card key={character.id} character={character} ref={lastPostRef} />
                 )}
 
             </div>
-            <div className="buttons">
-                <button onClick={handlePrevPage} className="button-27" >Previous</button>
-                <button onClick={handleNextPage} className="button-27">Next</button>
-            </div>
+
         </>
     );
 }
