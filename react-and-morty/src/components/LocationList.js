@@ -25,13 +25,12 @@ export default function LocationList({ url }) {
         if (intObserver.current) intObserver.current.disconnect();
         intObserver.current = new IntersectionObserver(posts => {
             if (posts[0].isIntersecting && hasNextPage) {
-                console.log("Coming to the last page");
                 setLoadedPageNumber(pageNumber => pageNumber + 1)
             }
         })
         if (post) intObserver.current.observe(post);
     }, [isPending, hasNextPage])
-    
+
     return (
         <div className="loc-container">
             {isPending && <div>loading...</div>}
