@@ -171,3 +171,7 @@ a:hover {
 nav {
     text-align: center;
 }
+
+.loc-card .cardBtn-container {
+    margin-right: 0;
+}
