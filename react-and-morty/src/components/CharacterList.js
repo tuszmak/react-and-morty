@@ -7,12 +7,15 @@ export default function CharacterList({ url }) {
     const [loadedPageNumber, setLoadedPageNumber] = useState(1);
     const [characters, setCharacters] = useState(null)
     const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
+    const [hasNextPage, setHasNextPage] = useState(true)
 
-    
-    const hasNextPage = true
-    useEffect(()=>{
+        useEffect(()=>{
+
         if(!isPending && loadedPageNumber !== 1){
+            
             setCharacters([...characters, ...data.results])
+            setHasNextPage(data.info.next ? true : false);
+
         }
         else if(!isPending){
             setCharacters([...data.results])
@@ -30,7 +33,7 @@ export default function CharacterList({ url }) {
       })
       if(post) intObserver.current.observe(post);
     }, [isPending,hasNextPage])
-    console.log(characters);
+    // console.log(characters);
     return (
         <>
             <div className="character-list" >
