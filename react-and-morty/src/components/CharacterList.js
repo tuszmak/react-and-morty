@@ -6,18 +6,12 @@ export default function CharacterList({ url }) {
 
     const [loadedPageNumber, setLoadedPageNumber] = useState(1);
     const [characters, setCharacters] = useState(null)
-    function handlePrevPage() {
-        if (loadedPageNumber > 0) { setLoadedPageNumber(loadedPageNumber - 1); }
-    }
-    function handleNextPage() {
-        if (loadedPageNumber < 43) { setLoadedPageNumber(loadedPageNumber + 1) };
-    }
     const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
 
     
     const hasNextPage = true
     useEffect(()=>{
-        if(!isPending && setLoadedPageNumber !== 1){
+        if(!isPending && loadedPageNumber !== 1){
             setCharacters([...characters, ...data.results])
         }
         else if(!isPending){
@@ -36,7 +30,7 @@ export default function CharacterList({ url }) {
       })
       if(post) intObserver.current.observe(post);
     }, [isPending,hasNextPage])
-    console.log(data);
+    console.log(characters);
     return (
         <>
             <div className="character-list" >
