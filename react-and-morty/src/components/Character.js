@@ -15,10 +15,10 @@ const Character = () => {
           <img src={character.image} alt="charImage" ></img>
           <ul>
             <li>Name: <Link to={`/character/${character.id}`}> {character.name}</Link></li>
-            <li>Location: <Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>
+            {character.location.url === "" ? <li>Location: {character.location.name}</li> : <li>Location: <Link to={`/location/${getLocationID(character.location.url)}`}>{character.location.name}</Link></li>}
             <li>Status: {character.status}</li>
             <li>Species: {character.species}</li>
-            <li>Episode Count:{character.episode.length}</li>
+            <li>Episode Count: {character.episode.length}</li>
             <li>Origin: {character.origin.name}</li>
             <li>Gender: {character.gender}</li>
           </ul>
