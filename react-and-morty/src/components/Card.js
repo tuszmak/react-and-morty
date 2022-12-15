@@ -8,14 +8,14 @@ export default function Card({ character, isOnlyOne }) {
         setIsExtended(!isExtended);
     }
     return (
-        <div class={`card-container ${isExtended && "extended"}`}>
-            <ul class={isExtended && "ul-extended"}>
+        <div className={`card-container ${isExtended && "extended"}`}>
+            <ul className={isExtended && "ul-extended"}>
                 <img src={character.image} alt="charImage" ></img>
                 <DefaultInfo character={character} />
                 {isExtended && <ExpandedInfo character={character} />}
             </ul>
-            <div class="cardBtn-container" onClick={handleExtension} >
-                <button class="cardBtn" >{isExtended ? "▲" : "▼"}</button>
+            <div className="cardBtn-container" onClick={handleExtension}>
+                <button className="cardBtn" >{isExtended ? "▲" : "▼"}</button>
             </div>
         </div >
     )
