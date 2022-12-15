@@ -5,6 +5,7 @@ import ResidentsList from "./ResidentList";
 import { useState } from "react";
 import React from "react";
 
+//ref is the observer created in locationList. It manages the infinite scrolling.
 const Location = React.forwardRef(({ locationID }, ref) => {
   let { id } = useParams();
   const fetchId = !id ? locationID : id;

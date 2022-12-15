@@ -9,6 +9,7 @@ export default function LocationList({ url }) {
     const [locations, setLocations] = useState(null)
     const [hasNextPage, setHasNextPage] = useState(true);
     const { isPending, error, data } = useFetch(url + `?page=${loadedPageNumber}`)
+    //An observer for infinite scrolling. It uses the same mechanics as in CharacterList
     useEffect(() => {
         if (!isPending && loadedPageNumber !== 1) {
             setLocations([...locations, ...data.results])
@@ -30,6 +31,7 @@ export default function LocationList({ url }) {
         })
         if (post) intObserver.current.observe(post);
     }, [isPending, hasNextPage])
+    
     return (
         <div className="loc-container">
             {isPending && <div>loading...</div>}

@@ -3,6 +3,7 @@ import useFetch from "../api/useFetch";
 import { mainUrls } from "../api/dataRoutes";
 import getLocationID from "../utils/getLocationID";
 
+/*This component is for a single character's website. For the Character list's cards, please go to the Card component */
 const Character = () => {
   const { id } = useParams()
   const { isPending, error, data: character } = useFetch(`${mainUrls.characters}${id}`);

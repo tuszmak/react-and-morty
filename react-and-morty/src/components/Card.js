@@ -3,7 +3,8 @@ import getLocationID from "../utils/getLocationID";
 import { Link } from "react-router-dom";
 import React from "react";
 
-
+/*This is the card component for the Characters webpage.
+ref is the observer created in characterList. It manages the infinite scrolling. */
 const Card = React.forwardRef(({ character, isOnlyOne }, ref) => {
     const [isExtended, setIsExtended] = useState(isOnlyOne ? true : false); // boolean if a card info is extended
     function handleExtension() {
