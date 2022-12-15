@@ -56,24 +56,29 @@ body {
 .character-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 .card-container {
-    width: 30%;
+    display: flex;
+    flex-direction: column;
     background: #172A46;
     border-radius: 25px;
-    white-space: nowrap;
     margin: 5px;
     font-weight: bold;
+    max-width: min-content;
+    padding-right: 40px;
+    justify-content: flex-end;
 }
 
 .extended {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    margin-bottom: -10%;
-    z-index: 10;
+    margin-bottom: -12%;
+    z-index: 1;
+}
+
+ul {
+    flex: auto;
 }
 
 .ul-extended {
@@ -90,10 +95,11 @@ body {
 .cardBtn-container {
     background: #33568a;
     border-radius: 25px;
+    margin-right: -40px;
 }
 
 img {
-    width: 50%;
+    width: 225px;
     border-radius: 25px;
 }
 
