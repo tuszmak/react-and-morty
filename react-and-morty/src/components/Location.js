@@ -28,7 +28,7 @@ const Location = React.forwardRef(({ locationID }, ref) => {
           {isExtended && (
             <>
               {" "}
-              <h2>Residents:</h2>
+              <h2>Residents: </h2>
               <ul>
                 {loc.residents.length === 0 && <li>None</li>}
                 <ResidentsList residents={loc.residents} />
