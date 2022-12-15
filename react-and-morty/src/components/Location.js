@@ -20,7 +20,7 @@ const Location = ({ locationID }) => {
       {isPending && <h1>Loading...</h1>}
       {error && <h1>{error}</h1>}
       {loc && (
-        <div className="card-container center">
+        <div className={`loc-card ${!id ? '' : 'center'}`}>
           <h1>{loc.name}</h1>
           <h3>Type: {loc.type}</h3>
           <p>Dimension: {loc.dimension}</p>
@@ -29,11 +29,15 @@ const Location = ({ locationID }) => {
               {" "}
               <h2>Residents:</h2>
               <ul>
+                {loc.residents.length === 0 && <li>None</li>}
                 <ResidentsList residents={loc.residents} />
               </ul>
             </>
           )}
-          {!id && <button onClick={handleExtension}>{isExtended ? "Collapse" : "Extend"}</button>}
+          {!id &&
+            <div className="cardBtn-container" onClick={handleExtension}>
+              <button className="cardBtn" >{isExtended ? "▲" : "▼"}</button>
+            </div>}
         </div>
       )}
     </div>
