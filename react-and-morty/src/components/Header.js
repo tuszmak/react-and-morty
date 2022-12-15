@@ -4,7 +4,7 @@ function Landing() {
 
     let img = "./Rick_and_Morty.svg"
     return <>
-        <div style={{ textAlign: "center" }}>
+        <nav className="">
             <Link to={'/'}><img id="logo" src={img} alt="img logo" ></img></Link>
             <div>
                 <Link to={'/characters'} >
@@ -14,7 +14,7 @@ function Landing() {
                     <button className="button-27">Locations</button>
                 </Link>
             </div>
-        </div>
+        </nav>
 
     </>
 }
