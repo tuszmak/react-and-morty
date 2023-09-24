@@ -6,6 +6,7 @@ This project shows our knowledge of React after one month!
 # About the project
 
 React and Morty is a multi-page website that shows the characters and planets of the popular series Rick and Morty.
+It also displays the connections between characters and planets.
 
 # Technologies used
 
