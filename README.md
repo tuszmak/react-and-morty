@@ -9,8 +9,8 @@ React and Morty is a multi-page website that shows the characters and planets of
 
 # Technologies used
 
-- As the name implies **React** is our main technology we use.
-- **CSS** is applied for styling. 
+- As the name implies **React 18.2.0** is our main technology we use.
+- **CSS 3** is applied for styling. 
 
 # Requirements
 
